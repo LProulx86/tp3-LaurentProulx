@@ -2,7 +2,9 @@
   "name": "uber_ripoff",
   "version": "1.0.0",
   "description": "Tp3 - cours d'applications Web et sécurité",
-  "main": "index.js",
+  "engines": {
+    "node": "v15.10.0"
+  },
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +18,8 @@
     "express-hateoas-links": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.6",
-    "swagger-ui-express": "^4.1.6"
+    "swagger-ui-express": "^4.1.6",
+    "body-parser": "^1.17.2",
+    "mongodb": "^3.6.5"
   }
 }

@@ -1,6 +1,7 @@
 /* jshint node: true */
 'use strict';
 
+const PORT = process.env.PORT || 8090;
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -12,7 +13,7 @@ var swaggerUI = require('swagger-ui-express'), swaggerDocument = require('./swag
 
 app.set('secret', config.secret);
 
-mongoose.connect('mongodb://localhost:27017/quber', {
+mongoose.connect('mongodb+srv://LaurentP86:X.rrhDNS2ci8Wr-@cluster0.ovxud.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/quber', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     poolSize: 10
@@ -43,6 +44,6 @@ app.all('*', function (req, res){
     res.status(404).send('Erreur 404 : Ressource inexistante !');
 });
 
-app.listen(8090, function () {
+app.listen(PORT, function () {
     console.log('Serveur sur port ' + this.address().port);
 });

@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 
 var verification = require('../verification');
 
-mongoose.connect('mongodb://localhost:27017/quber', {
+mongoose.connect('mongodb+srv://LaurentP86:X.rrhDNS2ci8Wr-@cluster0.ovxud.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/quber', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     poolSize: 10
