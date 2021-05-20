@@ -9,12 +9,6 @@ var mongoose = require('mongoose');
 
 var verification = require('../verification');
 
-mongoose.connect('mongodb+srv://LaurentP86:X.rrhDNS2ci8Wr-@cluster0.ovxud.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/quber', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    poolSize: 10
-});
-
 var usagerModel = require('../models/quberModels').usagerModel;
 
 
