@@ -13,7 +13,7 @@ var swaggerUI = require('swagger-ui-express'), swaggerDocument = require('./swag
 
 app.set('secret', config.secret);
 
-mongoose.connect('mongodb+srv://LaurentP86:X.rrhDNS2ci8Wr-@cluster0.ovxud.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/quber', {
+mongoose.connect('mongodb+srv://LaurentP86:X.rrhDNS2ci8Wr-@cluster0.ovxud.mongodb.net/quber', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     poolSize: 10
