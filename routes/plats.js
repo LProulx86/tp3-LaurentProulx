@@ -39,7 +39,7 @@ routerPlats.use(function (req, res, next){
 routerPlats.route('/')
     .get(cors(corsOption), function (req,res){
         platsModel.find({}, function(err, plats){
-            if (err) throw err;
+            if (err)  res.status(400).send("erreur recherche plats");
             var resBody = [];
             plats.forEach(plat => {
                 var links =[
@@ -61,7 +61,7 @@ routerPlats.route('/')
         console.log('Création d\'un plat');
         var nouveauPlat = new platsModel(req.body);
         nouveauPlat.save(function (err) {
-            if (err) throw err;
+            if (err) res.status(400).send("erreur creation plats");
             res.setHeader('Location', req.protocol + '://' + req.get('host') + '/plats/' + nouveauPlat._id);
             res.status(201).json(nouveauPlat,[
             {rel: "self",method: "GET",href: req.protocol + '://' + req.get('host') + '/plats/'+nouveauPlat._id.toString()},
@@ -79,7 +79,7 @@ routerPlats.route('/:plats_id')
         var id = req.params.plats_id;
         console.log('consultation du plat : ' + id);
         platsModel.findById(id, function(err, plat){
-        if(err) throw err;
+        if(err) res.status(400).send("erreur recherche plats par id");
         if(plat) res.status(200).json(plat, [
             {rel: "delete",method: "DELETE",href: req.protocol + '://' + req.get('host')+ id}
         ]);
@@ -90,7 +90,7 @@ routerPlats.route('/:plats_id')
         var id = req.params.plats_id;
         console.log('Suppression du plat : ' + id);
         platsModel.findByIdAndDelete(id, function (err) {
-            if (err) throw err;
+            if (err) res.status(400).send("erreur suppression plats");
             res.status(204).end();
         });
     })

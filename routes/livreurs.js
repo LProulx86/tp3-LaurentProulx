@@ -25,7 +25,7 @@ routerLivreurs.route('/')
     .post(function (req,res){
         var nouveauLivreur = new livreurModel(req.body);
         nouveauLivreur.save(function(err){
-            if (err) throw err;
+            if (err) res.status(400).send("erreur creation livreur");
             res.setHeader('Location', req.protocol + '://' + req.get('host') + '/livreurs/' + nouveauLivreur._id); 
             res.status(201).json(nouveauLivreur);
         });
@@ -49,7 +49,7 @@ routerLivreurs.route('/:livreur_id')
         var id = req.params.livreur_id;
         console.log('Suppression du livreur : ' + id);
         livreurModel.findByIdAndDelete(id, function (err) {
-            if (err) throw err;
+            if (err)  res.status(400).send("erreur creation livreur");
             res.status(204).end();
         });
     })

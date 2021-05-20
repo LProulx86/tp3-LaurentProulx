@@ -37,13 +37,13 @@ routerUsager.route('/')
         var query = {pseudo: username};
         var pseudoExist;
         await usagerModel.findOne(query, function (err, utilisateur) {
-            if (err) throw err;
+            if (err) res.status(400).send("erreur creation usager");
             pseudoExist = utilisateur;
         });
         if (!pseudoExist){
             var nouveauUser = new usagerModel(req.body);
             nouveauUser.save(function(err){
-            if (err) throw err;
+            if (err) res.status(400).send("erreur creation usager");
             res.setHeader('Location', req.protocol + '://' + req.get('host') + '/usagers/' + nouveauUser._id); 
             res.status(201).json(nouveauUser);
             });
@@ -67,7 +67,7 @@ routerUsager.route('/:usager_id')
             if (req.jeton.user === id){
                 console.log('consultation de l\'usager : ' + id);
                 usagerModel.findById(id, function(err, user){
-                if(err) throw err;
+                if(err) res.status(400).send("erreur recherche usager");
                 if(user) res.json(user);
                 else {
                     res.status(404).end();
@@ -83,7 +83,7 @@ routerUsager.route('/:usager_id')
         var id = req.params.usager_id;
         console.log('Suppression usager : ' + id);
         usagerModel.findByIdAndDelete(id, function (err) {
-            if (err) throw err;
+            if (err) res.status(400).send("erreur suppression usager");
             res.status(204).end();
         });
     })

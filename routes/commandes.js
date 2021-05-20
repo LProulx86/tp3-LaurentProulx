@@ -37,7 +37,7 @@ routerCommandes.route('/')
         else{
             var nouvelleCommande = new commandeModel({usager: req.body});
             nouvelleCommande.save(function(err){
-                if (err) throw err;
+                if (err) res.status(400).send("erreur création Commande");
                 res.setHeader('Location', req.protocol + '://' + req.get('host') + '/usagers/' + userid + '/commandes/' + nouvelleCommande._id); 
                 res.status(201).json(nouvelleCommande);
             });
@@ -93,12 +93,12 @@ routerCommandes.route('/:commande_id')
             if(req.body.livreur === undefined && req.body.plats === undefined){
                 var id = req.params.commande_id;
                 commandeModel.findById(id, function (err, commande) {
-                    if (err) throw err;
+                    if (err) res.status(400).send("erreur modification Commande");
                     if (commande === null) {
                         console.log('(put)Création de la commande, id : ' + id);
                         commande = new commandeModel(req.body);
                         commande.save(function (err) {
-                            if (err) throw err;
+                            if (err) res.status(400).send("erreur modification Commande");
                             res.setHeader('Location', req.protocol + '://' + req.get('host') + '/usagers/' + userid + '/commandes/' + commande._id);
                             res.status(201).json(commande);
                         });
@@ -109,7 +109,7 @@ routerCommandes.route('/:commande_id')
                             new: true,
                             runValidators: true
                         }, function (err, commande) {
-                            if (err) throw err;
+                            if (err) res.status(400).send("erreur modification Commande");
                             res.json(commande);
                         });
                     }
@@ -129,7 +129,7 @@ routerCommandes.route('/:commande_id')
             var id = req.params.commande_id;
             console.log('Suppression de la commande : ' + id);
             commandeModel.findByIdAndDelete(id, function (err) {
-                if (err) throw err;
+                if (err) res.status(400).send("erreur suppression Commande");
                 res.status(204).end();
             });
         }
@@ -150,7 +150,7 @@ routerCommandes.route('/:commande_id/livreur')
                 var id = req.params.commande_id;
 
                 commandeModel.findById(id, async function (err, commande) {
-                    if (err) throw err;
+                    if (err) res.status(400).send("erreur modification Commande/livreur");
                     if (commande === null) {
                         res.status(404).send('Une commande doit être créer avant de lui attribué un livreur');
                     }
@@ -158,14 +158,14 @@ routerCommandes.route('/:commande_id/livreur')
                         console.log('Création d\'un livreur puis attribution du livreur dans la commande');
                         var nouveauLivreur = new livreurModel(req.body);
                         nouveauLivreur.save(function(err,livreur){
-                        if (err) throw err;
+                        if (err) res.status(400).send("erreur modification Commande/livreur");
                         });
                         commande.livreur = nouveauLivreur;
                         commandeModel.findByIdAndUpdate(id, commande, {
                             new: true,
                             runValidators: true
                         }, function (err, commande) {
-                            if (err) throw err;
+                            if (err) res.status(400).send("erreur modification Commande/livreur");
                             res.setHeader('Location', req.protocol + '://' + req.get('host') + '/livreurs/' + nouveauLivreur._id); 
                             res.status(201).json(commande);
                         });
@@ -178,7 +178,7 @@ routerCommandes.route('/:commande_id/livreur')
                             new: true,
                             runValidators: true
                         }, function (err, commande) {
-                            if (err) throw err;
+                            if (err) res.status(400).send("erreur modification Commande/livreur");
                             res.json(commande);
                         });
                     }
@@ -194,7 +194,6 @@ routerCommandes.route('/:commande_id/livreur')
         res.status(405).send('Cette méthode n\'est pas disponible');
     });
 
-// TODO: implantation Hateaos
 routerCommandes.route('/:commande_id/plats')
     .get( function(req,res){
         var userid = req.params.usager_id;
@@ -205,7 +204,7 @@ routerCommandes.route('/:commande_id/plats')
             var id = req.params.commande_id;
             console.log('consultation de la commande : ' + id);
             commandeModel.findById(id, function(err, commande){
-            if(err) throw err;
+            if(err) res.status(400).send("erreur recherche Commande/plats");
             if(commande) res.json(commande.plats);
             else res.status(404).end();
             });
@@ -227,7 +226,7 @@ routerCommandes.route('/:commande_id/plats/:plats_id')
             var id = req.params.commande_id;
             console.log(id);
             commandeModel.findById(id, function (err, commande) {
-                if (err) throw err;
+                if (err) res.status(400).send("erreur modification Commande/plats");
                 if (commande === null) {
                     res.status(404).send('Une commande doit être créer avant de lui attribué un plat');
                 }
@@ -238,14 +237,14 @@ routerCommandes.route('/:commande_id/plats/:plats_id')
                         res.status(404).send("Vous devez fournir un body pour pouvoir créer un plat");
                     }
                     nouveauPlat.save(function(err,plat){
-                        if (err) throw err;
+                        if (err) res.status(400).send("erreur modification Commande/plats");
                     });
                     commande.plats.push(nouveauPlat);
                     commandeModel.findByIdAndUpdate(id, commande, {
                         new: true,
                         runValidators: true
                     }, function (err, commande) {
-                        if (err) throw err;
+                        if (err) res.status(400).send("erreur modification Commande/plats");
                         res.status(201);
                         res.json(commande);
                     });
@@ -257,7 +256,7 @@ routerCommandes.route('/:commande_id/plats/:plats_id')
                         new: true,
                         runValidators: true
                     }, function (err, commande) {
-                        if (err) throw err;
+                        if (err) res.status(400).send("erreur modification Commande/plats");
                         res.json(commande);
                     });
                 }
