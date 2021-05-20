@@ -6,7 +6,6 @@
     "node": "v15.10.0"
   },
   "scripts": {
-    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Laurent Proulx",
