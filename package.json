@@ -1,0 +1,21 @@
+{
+  "name": "uber_ripoff",
+  "version": "1.0.0",
+  "description": "Tp3 - cours d'applications Web et sécurité",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Laurent Proulx",
+  "license": "ISC",
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-hateoas-links": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.6",
+    "swagger-ui-express": "^4.1.6"
+  }
+}

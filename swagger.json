@@ -1,0 +1,618 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Documentation Quber",
+        "description": "Documentation générale",
+        "version": "0.1"
+    },
+    "servers": [{
+        "url": "http://localhost:8090"
+    }],
+    "tags": [{
+            "name": "Usager"
+        },
+        {
+            "name": "Livreurs"
+        },
+        {
+            "name": "Connexion"
+        },
+        {
+            "name": "Plats"
+        },
+        {
+            "name": "Commandes"
+        }
+    ],
+    "paths": {
+        "/usagers/60a68fb218a8e95ca41bb5ec": {
+            "get": {
+                "tags": [
+                    "Usager"
+                ],
+                "description": "Recherche d'un usager",
+                "responses": {
+                    "200": {
+                        "description": "Retourne le json de l'usager en question"
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "Usager"
+                ],
+                "description": "Suprression d'un usager",
+                "responses": {
+                    "204": {
+                        "description": "Retourne le status 204 en cas de réussite"
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "servers": [{
+                "url": "http://localhost:8090"
+            }]
+        },
+        "/livreurs": {
+            "post": {
+                "tags": [
+                    "Livreurs"
+                ],
+                "description": "Création d'un livreur",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/body"
+                            },
+                            "examples": {
+                                "0": {
+                                    "value": "{\r\n    \"nom\": \"Villeneuve\",\r\n    \"prenom\": \"Jacques\",\r\n    \"Voiture\": \"Williams\",\r\n    \"Quartier\": \"Westmont\"\r\n}"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Retourne le json du livreur"
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "servers": [{
+                "url": "http://localhost:8090"
+            }]
+        },
+        "/usagers": {
+            "post": {
+                "tags": [
+                    "Usager"
+                ],
+                "description": "Création d'un usager",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/body_1"
+                            },
+                            "examples": {
+                                "0": {
+                                    "value": "{\r\n    \"nom\": \"Frankenstein\",\r\n    \"prenom\": \"Dr\",\r\n    \"adresse\": \"1200 Frank ave\",\r\n    \"pseudo\": \"SparePart\",\r\n    \"motDePasse\": \"12345\"\r\n}"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Retourne le json de l'usager créé"
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "servers": [{
+                "url": "http://localhost:8090"
+            }]
+        },
+        "/livreurs/60a6945018a8e95ca41bb5ed": {
+            "get": {
+                "tags": [
+                    "Livreurs"
+                ],
+                "description": "Recherche un livreur avec ce ID.",
+                "responses": {
+                    "200": {
+                        "description": "Retourne le json d'un livreur trouvé."
+                    },
+                    "404": {
+                        "description": "Aucun livreur trouvé avec ce id."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "Livreurs"
+                ],
+                "description": "Supprime le livreur avec ce ID.",
+                "responses": {
+                    "204": {
+                        "description": "Retourne le status 204 en cas de réussite"
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "servers": [{
+                "url": "http://localhost:8090"
+            }]
+        },
+        "/connexions": {
+            "post": {
+                "tags": [
+                    "Connexion"
+                ],
+                "description": "Permet la connexion et la création d\\'un token d\\'authentification.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/body_2"
+                            },
+                            "examples": {
+                                "0": {
+                                    "value": "{\r\n    \"pseudo\": \"SparePart\",\r\n    \"motDePasse\": \"12345\"\r\n}"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Retourne le token. Ce dernier doit être sauvegarder."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "servers": [{
+                "url": "http://localhost:8090"
+            }]
+        },
+        "/plats": {
+            "get": {
+                "tags": [
+                    "Plats"
+                ],
+                "description": "Recherche de tous les plats existant.",
+                "responses": {
+                    "200": {
+                        "description": "Retourne tous les plats. Adresse externe seulement."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "post": {
+                "tags": [
+                    "Plats"
+                ],
+                "description": "Création d\\'un plat.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/body"
+                            },
+                            "examples": {
+                                "0": {
+                                    "value": "{\r\n    \"nom\": \"Kraft dinner\",\r\n    \"nbrPortons\": 2\r\n}"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Retourne le json du plat créé."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "servers": [{
+                "url": "http://localhost:8090"
+            }]
+        },
+        "/plats/60a6a65ffbe3d3605025afbd": {
+            "get": {
+                "tags": [
+                    "Plats"
+                ],
+                "description": "Recherche le plat avec son ID.",
+                "responses": {
+                    "200": {
+                        "description": "Retourne le json du plat trouvé."
+                    },
+                    "404": {
+                        "description": "Aucun plat trouvé."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "Plats"
+                ],
+                "description": "Supprime le plat à l\\'aide son ID.",
+                "responses": {
+                    "204": {
+                        "description": "Suppression réussit."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "servers": [{
+                "url": "http://localhost:8090"
+            }]
+        },
+        "/usagers/Usager_id/commandes/Commande_id": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "description": "Recherche une Commande à l\\'aide de son ID.",
+                "responses": {
+                    "200": {
+                        "description": "Retourne le json de la commande."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "put": {
+                "tags": [
+                    "Commandes"
+                ],
+                "description": "Ajout d\\'une date à la commande",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/body"
+                            },
+                            "examples": {
+                                "0": {
+                                    "value": "{\r\n    \"dateArrivee\": \"2021-05-09\"\r\n}"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "La date à été modifier."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "Commandes"
+                ],
+                "description": "Supprime la Commande",
+                "responses": {
+                    "204": {
+                        "description": "Commande supprimée."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "servers": [{
+                "url": "http://localhost:8090"
+            }]
+        },
+        "/usagers/Usager_id/commandes/Commande_id/plats/Plat_id": {
+            "put": {
+                "tags": [
+                    "Commandes"
+                ],
+                "description": "Ajoute un plat à la commande grace au ID du plat. Peut également créer un plat.",
+                "responses": {
+                    "200": {
+                        "description": "Le plat est ajouté à la commande. Retourne le json de la commande."
+                    },
+                    "201": {
+                        "description": "Un plat à été créé puis assigné à la commande. Retourne le json de la commande."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "Commandes"
+                ],
+                "description": "Supprime un plat de la commande.",
+                "responses": {
+                    "204": {
+                        "description": "Plat supprimé de la commande."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "servers": [{
+                "url": "http://localhost:8090"
+            }]
+        },
+        "/usagers/Usager_id/commandes/": {
+            "post": {
+                "tags": [
+                    "Commandes"
+                ],
+                "description": "Création d\\'une commande.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/body"
+                            },
+                            "examples": {
+                                "0": {
+                                    "value": "{\r\n    \"_id\": \"6099469e6f9a3823a054c85c\",\r\n    \"nom\": \"Proulx\",\r\n    \"prenom\": \"Laurent\",\r\n    \"adresse\": \"123 rue Albert\",\r\n    \"pseudo\": \"Plaurent\",\r\n    \"motDePasse\": \"12345\"\r\n}"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "La commande est créée."
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "servers": [{
+                "url": "http://localhost:8090"
+            }]
+        },
+        "/usagers/Usager_id/commandes/Commande_id/livreur": {
+            "put": {
+                "tags": [
+                    "Commandes"
+                ],
+                "description": "Retourne le json de la commande.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/body_1"
+                            },
+                            "examples": {
+                                "0": {
+                                    "value": "{\r\n    \"_id\": \"609aa9232a275351cc20dd9d\",\r\n    \"nom\": \"McQueen\",\r\n    \"prenom\": \"Flash\",\r\n    \"Voiture\": \"Nascar\",\r\n    \"Quartier\": \"Dinoco\",\r\n    \"__v\": 0\r\n}"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Retourne le json de la commande.",
+                        "content": {
+                            "text/html; charset=utf-8": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {}
+                            }
+                        }
+                    }
+                },
+                "servers": [{
+                    "url": "http://localhost:8090"
+                }]
+            },
+            "servers": [{
+                "url": "http://localhost:8090"
+            }]
+        }
+
+    },
+    "components": {
+        "schemas": {
+            "Usager": {
+                "type": "object",
+                "properties": {
+                    "motDePasse": {
+                        "type": "string"
+                    },
+                    "adresse": {
+                        "type": "string"
+                    },
+                    "nom": {
+                        "type": "string"
+                    },
+                    "prenom": {
+                        "type": "string"
+                    },
+                    "pseudo": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Connexion": {
+                "type": "object",
+                "properties": {
+                    "motDePasse": {
+                        "type": "string"
+                    },
+                    "pseudo": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Livreur": {
+                "type": "object",
+                "properties": {
+                    "Voiture": {
+                        "type": "string"
+                    },
+                    "Quartier": {
+                        "type": "string"
+                    },
+                    "nom": {
+                        "type": "string"
+                    },
+                    "prenom": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Commandes":{
+                "id": "#commandes",
+                "title": "Commandes",
+                "type": "object",
+                "properties": {
+                    "dateArrivee": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "livreur": {
+                        "title": "livreur",
+                        "type": "object",
+                        "properties": {
+                            "nom": {
+                                "type": "string"
+                            },
+                            "prenom": {
+                                "type": "string"
+                            },
+                            "Voiture": {
+                                "type": "string"
+                            },
+                            "Quartier": {
+                                "type": "string"
+                            },
+                            "_id": {
+                                "type": "string",
+                                "pattern": "^[0-9a-fA-F]{24}$"
+                            }
+                        },
+                        "required": [
+                            "nom",
+                            "prenom",
+                            "Voiture",
+                            "Quartier"
+                        ]
+                    },
+                    "usager": {
+                        "title": "usager",
+                        "type": "object",
+                        "properties": {
+                            "nom": {
+                                "type": "string"
+                            },
+                            "prenom": {
+                                "type": "string"
+                            },
+                            "adresse": {
+                                "type": "string"
+                            },
+                            "pseudo": {
+                                "type": "string"
+                            },
+                            "motDePasse": {
+                                "type": "string"
+                            },
+                            "_id": {
+                                "type": "string",
+                                "pattern": "^[0-9a-fA-F]{24}$"
+                            }
+                        },
+                        "required": [
+                            "nom",
+                            "prenom",
+                            "adresse",
+                            "pseudo",
+                            "motDePasse"
+                        ]
+                    },
+                    "plats": {
+                        "type": "array",
+                        "items": {
+                            "title": "itemOf_plats",
+                            "type": "object",
+                            "properties": {
+                                "nom": {
+                                    "type": "string"
+                                },
+                                "nbrPortons": {
+                                    "type": "number",
+                                    "default": 1
+                                },
+                                "_id": {
+                                    "type": "string",
+                                    "pattern": "^[0-9a-fA-F]{24}$"
+                                },
+                                "__v": {
+                                    "type": "number"
+                                }
+                            },
+                            "required": [
+                                "nom",
+                                "nbrPortons"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "usager"
+                ]
+            }
+        },
+        "securitySchemes": {
+            "oauth2": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "http://yourauthurl.com",
+                        "scopes": {
+                            "scope_name": "Enter your scopes here"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,209 @@
+[
+  {
+    "id": "#commandes",  
+    "title": "Commandes",
+    "type": "object",
+    "properties": {
+      "dateArrivee": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "livreur": {
+        "title": "livreur",
+        "type": "object",
+        "properties": {
+          "nom": {
+            "type": "string"
+          },
+          "prenom": {
+            "type": "string"
+          },
+          "Voiture": {
+            "type": "string"
+          },
+          "Quartier": {
+            "type": "string"
+          },
+          "_id": {
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{24}$"
+          },
+          "__v": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "nom",
+          "prenom",
+          "Voiture",
+          "Quartier"
+        ]
+      },
+      "usager": {
+        "title": "usager",
+        "type": "object",
+        "properties": {
+          "nom": {
+            "type": "string"
+          },
+          "prenom": {
+            "type": "string"
+          },
+          "adresse": {
+            "type": "string"
+          },
+          "pseudo": {
+            "type": "string"
+          },
+          "motDePasse": {
+            "type": "string"
+          },
+          "_id": {
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{24}$"
+          },
+          "__v": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "nom",
+          "prenom",
+          "adresse",
+          "pseudo",
+          "motDePasse"
+        ]
+      },
+      "plats": {
+        "type": "array",
+        "items": {
+          "title": "itemOf_plats",
+          "type": "object",
+          "properties": {
+            "nom": {
+              "type": "string"
+            },
+            "nbrPortons": {
+              "type": "number",
+              "default": 1
+            },
+            "_id": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{24}$"
+            },
+            "__v": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "nom",
+            "nbrPortons"
+          ]
+        }
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-fA-F]{24}$"
+      },
+      "__v": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "usager"
+    ]
+  },
+  {
+    "id": "#livreur",
+    "title": "livreur",
+    "type": "object",
+    "properties": {
+      "nom": {
+        "type": "string"
+      },
+      "prenom": {
+        "type": "string"
+      },
+      "Voiture": {
+        "type": "string"
+      },
+      "Quartier": {
+        "type": "string"
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-fA-F]{24}$"
+      },
+      "__v": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "nom",
+      "prenom",
+      "Voiture",
+      "Quartier"
+    ]
+  },
+  {
+    "id": "#usager",
+    "title": "usager",
+    "type": "object",
+    "properties": {
+      "nom": {
+        "type": "string"
+      },
+      "prenom": {
+        "type": "string"
+      },
+      "adresse": {
+        "type": "string"
+      },
+      "pseudo": {
+        "type": "string"
+      },
+      "motDePasse": {
+        "type": "string"
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-fA-F]{24}$"
+      },
+      "__v": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "nom",
+      "prenom",
+      "adresse",
+      "pseudo",
+      "motDePasse"
+    ]
+  },
+  {
+    "id": "#plat",
+    "title": "plat",
+    "type": "object",
+    "properties": {
+      "nom": {
+        "type": "string"
+      },
+      "nbrPortons": {
+        "type": "number",
+        "default": 1
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-fA-F]{24}$"
+      },
+      "__v": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "nom",
+      "nbrPortons"
+    ]
+  }
+]
